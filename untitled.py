@@ -5,7 +5,7 @@ pygame.init()
 LENGTH = 720
 HEIGHT = 480
 res= pygame.display.set_mode((LENGTH,HEIGHT))
-pygamee.display.set_caption("Surpent's Crawl")
+pygame.display.set_caption("Surpent's Crawl")
 base = 10
 radius = base//2
 def snake(base,snake_list):
@@ -14,10 +14,11 @@ def snake(base,snake_list):
 length = LENGTH//base
 height = HEIGHT//base
 snake_list = []
-length_of_snake = 1
+
 def food(foodx,foody):
 	pygame.draw.rect(res,(255,0,0),(foodx,foody,base,base))
 def the_game():
+	length_of_snake = 1
 	run = True
 	restart = False
 	x1 = random.choice(range(length*10))
@@ -62,7 +63,7 @@ def the_game():
 		food(foodx,foody)
 		snake(base,snake_list)		
 		if x1>=LENGTH or x1<0 or y1>=HEIGHT or y1<0:
-			snake(base,snake_list)
+			return True
 		pygame.display.update()
 		pygame.time.delay(2)
 the_game()
