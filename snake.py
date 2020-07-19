@@ -16,8 +16,15 @@ res = pygame.display.set_mode((length_of_canvas,height_of_canvas))
 pygame.display.set_caption("Surpent's Crawl")
 pygame.display.set_icon(pygame.image.load('icon.png'))
 '''Icon made by https://www.flaticon.com/authors/google'''
+
+eat_sound = pygame.mixer.Sound('eat.wav')
+hit_sound = pygame.mixer.Sound('hit.wav')
+suicide_sound = pygame.mixer.Sound('suicide.wav')
+music =  pygame.mixer.music.load('bgm.wav')
+pygame.mixer.music.play(-1)
 unit = 10
 FPS = 35
+
 
 #FUNCTIONS
 
@@ -101,6 +108,7 @@ def the_game():
 		#eationg Food
 
 		if x1==foodx and y1==foody:
+			eat_sound.play()
 			foodx=random.choice(range(length))
 			foody=random.choice(range(height))
 			length_of_snake+=1
@@ -109,10 +117,12 @@ def the_game():
 		#death of Snake
 
 		if x1>=length or x1<0 or y1>=height or y1<0:
+			hit_sound.play()
 			return True
 		
 		for i in snake_list[:-1]:
 			if i == snake_head:
+				suicide_sound.play()
 				return True 
 
 		#drawing score
