@@ -1,39 +1,32 @@
-#IMPORTING
-
+#IMPORTING LIBRARIES AND IN-BUIT FUNCTIONS
 import pygame
 import random
 
 #BASIC SETUP
-
 pygame.init()
-
-length_of_canvas = 1080
-height_of_canvas = 720
 
 clock = pygame.time.Clock()
 
-res = pygame.display.set_mode((length_of_canvas,height_of_canvas))
+res = pygame.display.set_mode((1080,720))
 pygame.display.set_caption("Surpent's Crawl")
 pygame.display.set_icon(pygame.image.load('icon.png'))
-'''Icon made by https://www.flaticon.com/authors/google'''
+'''Icon by https://www.flaticon.com/authors/google'''
 
 eat_sound = pygame.mixer.Sound('eat.wav')
 hit_sound = pygame.mixer.Sound('hit.wav')
 suicide_sound = pygame.mixer.Sound('suicide.wav')
 music =  pygame.mixer.music.load('bgm.wav')
 pygame.mixer.music.play(-1)
+
 unit = 10
-FPS = 35
-
-
-#FUNCTIONS
+FPS = 25
 
 #SNAKE
 def snake(unit,snake_list):
 	for x in snake_list:
 		pygame.draw.rect(res,(0,0,255),(x[0]*unit,x[1]*unit,unit,unit))
-length = length_of_canvas//unit
-height = height_of_canvas//unit
+length = 1080//unit
+height = 720//unit
 
 #FOOD
 def food(foodx,foody):
@@ -49,7 +42,6 @@ def Score(score):
 def the_game():
 
 	#default_values
-
 	score = 0
 	snake_list = []
 	length_of_snake = 1
@@ -67,8 +59,7 @@ def the_game():
 
 	while run:
 		
-		#userControls
-
+		#Controls
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				run = False
@@ -89,9 +80,7 @@ def the_game():
 			length_of_snake+=1
 			score+=1
 
-
 		#properties of snake
-
 		x1 += x1_ch
 		y1 += y1_ch
 		snake_head = [x1,y1]
@@ -106,7 +95,6 @@ def the_game():
 		snake(unit,snake_list)
 
 		#eationg Food
-
 		if x1==foodx and y1==foody:
 			eat_sound.play()
 			foodx=random.choice(range(length))
@@ -115,7 +103,6 @@ def the_game():
 			score+=1
 
 		#death of Snake
-
 		if x1>=length or x1<0 or y1>=height or y1<0:
 			hit_sound.play()
 			return True
@@ -126,19 +113,15 @@ def the_game():
 				return True 
 
 		#drawing score
-
 		Score(score)
 		pygame.display.update()
 
-		#framerates
-
+		#framerate
 		clock.tick(FPS)
 
-#RUNNING GAME
-
+#START
 the_game()
 
-#RESTART ON DEATH
-
+#RESTART AFTER DEATH
 while the_game():
 	pass
