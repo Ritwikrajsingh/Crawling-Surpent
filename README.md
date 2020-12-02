@@ -6,10 +6,10 @@ Its a concept of a very popular and classic video game [**Snake**](https://en.wi
 
 # Programming
 
-- In *Pyhton* using **Pygame**.
+- In *Pyhton* using [Pygame](www.pygame.org).
 
 # Controls
 
 - Arrow keys or 'WASD' as other games.
 
-- Included a hidden cheat: player can find it himself.
+- Included a hidden cheat: _player need find it himself._
