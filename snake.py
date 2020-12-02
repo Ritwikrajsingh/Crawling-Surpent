@@ -19,7 +19,7 @@ music =  pygame.mixer.music.load('bgm.wav')
 pygame.mixer.music.play(-1)
 
 unit = 10
-FPS = 25
+FPS = 35
 
 #SNAKE
 def snake(unit,snake_list):
