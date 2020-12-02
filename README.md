@@ -12,4 +12,4 @@ Its a concept of a very popular and classic video game [**Snake**](https://en.wi
 
 - Arrow keys or 'WASD' as other games.
 
-- Included a hidden cheat: _player need find it himself._
+- Included a hidden cheat: _player need to find it himself._
